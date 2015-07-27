@@ -17,20 +17,20 @@ module Rouge
         text.shebang?(/(ba|z|k)?sh/) ? 1 : 0
       end
 
-      KEYWORDS = %w(
+      const_set(:KEYWORDS, %w(
         if fi else while do done for then return function
         select continue until esac elif in
-      ).join('|')
+      ).join('|'))
 
-      BUILTINS = %w(
+      const_set(:BUILTINS, %w(
         alias bg bind break builtin caller cd command compgen
         complete declare dirs disown echo enable eval exec exit
         export false fc fg getopts hash help history jobs kill let
         local logout popd printf pushd pwd read readonly set shift
         shopt source suspend test time times trap true type typeset
         ulimit umask unalias unset wait
-      ).join('|')
-
+      ).join('|'))
+      
       state :basic do
         rule /#.*$/, Comment
 
